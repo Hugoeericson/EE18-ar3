@@ -1,0 +1,4 @@
+fråga 1: om praxi betyder hur man skall bli bättre webbserverprogrammering så gör man det genom att göra mycket själv och inte bara kolla på videos utan att leka runt mycket med koden och försöka lösa problemet själv innan man kollar upp det. Mna skall också lägga kommentarer över koden så bode du och andra kan läsa och första din kod lättare
+
+
+fråga 2: först skall du ha php taggarna såklart sedan kan du välja om du vill skriva html i samma php dokument eller ett separat dokument
