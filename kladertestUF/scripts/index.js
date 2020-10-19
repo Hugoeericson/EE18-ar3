@@ -40,10 +40,10 @@ const setupGuides = (data) => {
         data.forEach(doc => {
             const guide = doc.data();
             const li = `
-            <li>
+            <div>
                 <div class="collapsible-header grey lighten-4">${guide.title}</div>
                 <div class="collapsible-body white">${guide.content}</div>
-            </li>
+            </div>
         `;
             hmtl += li
         })
