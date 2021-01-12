@@ -9,12 +9,14 @@ include "./resurser/conn.php";
 ?>
 <!DOCTYPE html>
 <html lang="sv">
+
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title></title>
     <link rel="stylesheet" href="style.css">
 </head>
+
 <body>
     <div class="kontainer">
         <header>
@@ -37,23 +39,30 @@ include "./resurser/conn.php";
             $lösen2 = filter_input(INPUT_POST, "lösen2", FILTER_SANITIZE_STRING);
 
             if ($fnamn && $enamn && $anamn && $lösen1 && $lösen2) {
-                if ($lösen1 == $lösen2) {
-                    //var_dump($fnamn, $enamn, $anamn, $lösen1);
 
-                    $hash = password_hash($lösen1, PASSWORD_DEFAULT);
+                $sql = "SELECT * FROM user WHERE anamn = '$anamn'";
+                $result = $conn->query($sql);
 
-                    $sql = "INSERT INTO user (fnamn, enamn, anamn, hash) VALUES ('$fnamn', '$enamn', '$anamn', '$hash')";
-                    $conn->query($sql);
-
-                    echo "<p>Anändaren registrerad</p>";
-
+                if ($result->num_rows != 0) {
+                    echo "<p>Användar namnet finns redan</p>";
                 } else {
-                    echo "<p>Lösenorden matchar inte, vg försök igen!</p>";
+                    if ($lösen1 == $lösen2) {
+                        //var_dump($fnamn, $enamn, $anamn, $lösen1);
+
+                        $hash = password_hash($lösen1, PASSWORD_DEFAULT);
+
+                        $sql = "INSERT INTO user (fnamn, enamn, anamn, hash) VALUES ('$fnamn', '$enamn', '$anamn', '$hash')";
+                        $conn->query($sql);
+
+                        echo "<p>Anändaren registrerad</p>";
+                    } else {
+                        echo "<p>Lösenorden matchar inte, vg försök igen!</p>";
+                    }
                 }
-                
             }
             ?>
         </main>
     </div>
 </body>
+
 </html>
