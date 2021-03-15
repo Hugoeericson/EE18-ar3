@@ -34,6 +34,11 @@ main {
     font-size: 0.9em;
     color: #7b7b7b;
 }
+nav .anamn {
+    margin-left: auto;
+    padding: 10px;
+    font-weight: bold;
+}
 
 form {
     background: #ffffffa3;

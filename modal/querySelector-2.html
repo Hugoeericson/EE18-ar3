@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="sv">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>querySelector() och value</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="kontainer">
+        <h1>Smileys</h1>
+        <h2>Input</h2>
+        <label>Ange text <input class="text" type="text"></label>
+        <button>Ny rad</button>
+        <button class="töm">Töm</button>
+        <br>
+
+        <button id="smiley">😀</button>
+        <button id="skiva">📀</button>
+
+        <h2>Output</h2>
+        <label>Svar <textarea class="svar" cols="30" rows="10" readonly></textarea>
+        </label>
+    </div>
+    <script>
+        // Element som används
+        const eRutaText = document.querySelector("input");
+        const eKnapp = document.querySelector("button");
+        const eTöm = document.querySelector(".töm");
+        const eSmiley = document.querySelector("#smiley");
+        const eSkiva = document.querySelector("#skiva");
+        const eTextarea = document.querySelector("textarea");
+
+        eKnapp.addEventListener("click", function() {
+            var text = eRutaText.value;
+
+            eTextarea.value += text + "\n";
+
+            eRutaText.value = null;
+        });
+
+        eTöm.addEventListener("click", function() {
+            eTextarea.value = null;
+        });
+
+        eSmiley.addEventListener("click", function() {
+            var smiley = "😀";
+            eTextarea.value += smiley;
+        });
+
+        eSkiva.addEventListener("click", function() {
+            eTextarea.value += "📀";
+        });
+
+    </script>
+</body>

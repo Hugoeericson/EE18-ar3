@@ -6,6 +6,7 @@
 * @license    PHP CC
 */
 include "./resurser/conn.php";
+session_start();
 ?>
 <!DOCTYPE html>
 <html lang="sv">
@@ -14,13 +15,30 @@ include "./resurser/conn.php";
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title></title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
     <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
     <div class="kontainer">
         <header>
-            <h1>Inloggning</h1>
+            <h1>Registrera</h1>
+            <nav>
+                <ul class="nav nav-tabs">
+                    <?php if (isset($_SESSION["anamn"])) { ?>
+                        <li class="nav-item"><a class="nav-link" href="./logout.php">Logga ut</a></li>
+                        <li class="nav-item"><a class="nav-link" href="./lista.php">Lista</a></li>
+                        <li class="nav-item"><a class="nav-link" href="./skriva.php">Skriv</a></li>
+                        <li class="nav-item"><a class="nav-link" href="./sok.php">Sök</a></li>
+                        <li class="nav-item"><a class="nav-link" href="./lasa.php">Läsa</a></li>
+                    <?php } else { ?>
+                        <li class="nav-item"><a class="nav-link" href="./login.php">Logga in</a></li>
+                        <li class="nav-item"><a class="nav-link active" href="./registrera.php">Registrera</a></li>
+                        <li class="nav-item"><a class="nav-link" href="./sok.php">Sök</a></li>
+                        <li class="nav-item"><a class="nav-link" href="./lasa.php">Läsa</a></li>
+                    <?php } ?>
+                </ul>
+            </nav>
         </header>
         <main>
             <form action="#" method="post">

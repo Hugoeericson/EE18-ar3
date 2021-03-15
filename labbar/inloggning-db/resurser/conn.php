@@ -14,5 +14,5 @@ $conn = new mysqli($host, $user, $pass, $db);
 if ($conn->connect_error) {
     die("Kunde inte ansluta: " . $conn->error);
 } else {
-    echo "<p>Ansluten</p>";
+//    echo "<p>Ansluten</p>";
 }

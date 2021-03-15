@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset='utf-8' />
+  <title>Points on a map</title>
+  <meta name='viewport' content='initial-scale=1,maximum-scale=1,user-scalable=no' />
+  <script src='https://api.tiles.mapbox.com/mapbox-gl-js/v2.1.1/mapbox-gl.js'></script>
+  <link href='https://api.tiles.mapbox.com/mapbox-gl-js/v2.1.1/mapbox-gl.css' rel='stylesheet' />
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div id='map'></div>
+  <script>
+    mapboxgl.accessToken = 'pk.eyJ1IjoiaHVnb2VyaWNzb24iLCJhIjoiY2ttMXhkaTFvMzEzYjJvcDNkbGx5MHlmZiJ9.d6TkGQJx7AV5dvoNBofLvw'; // replace this with your access token
+    var map = new mapboxgl.Map({
+      container: 'map',
+      style: 'mapbox://styles/hugoericson/ckm1xjg4m7aep17qojypeeq7x', // replace this with your style URL
+      center: [18.266002, 59.331341],
+      zoom: 12
+    });
+
+    var popupKontainern = new mapboxgl.Popup({ offset: 25 }).setHTML(
+      '<h3>Här är Kontainern!</h3><p><img src="./bilder/2019-08-14.jpg" alt="riset" </img>Kontainern </p>'
+    );
+
+    var Kontainern = new mapboxgl.Marker()
+      .setLngLat([18.285492, 59.359922])
+      .setPopup(popupKontainern)
+      .addTo(map);
+
+    var popupOrmingeC = new mapboxgl.Popup({ offset: 25 }).setHTML(
+      '<h3>Här är Orimge Centrum!</h3><p><img src="./bilder/orminge.jpg" alt="riset" </img>Orminge Centrum</p>'
+    );
+
+    var ormingeC = new mapboxgl.Marker()
+      .setLngLat([18.258022, 59.326452])
+      .setPopup(popupOrmingeC)
+      .addTo(map);
+    // code from the next step will go here
+  </script>
+</body>
+</html>
