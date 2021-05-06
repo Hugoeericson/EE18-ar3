@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="sv">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Canvas övning</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <canvas width="800" height="600"></canvas>
+    <script>
+        // Element vi använder
+        const eCanvas = document.querySelector("canvas");
+
+        // slå på ritmotorn
+        var ctx = eCanvas.getContext("2d");
+
+
+        // rita ut en bild
+        // Steg 1: ladda in bilden
+        var moon = new Image();
+        moon.src = "./bilder/8-moon-surface-background-cartoon-clipart.jpg";
+        var rocket = new Image();
+        rocket.src = "./bilder/rocket.png";
+
+        // animationsloopen
+        var rocketx = 350;
+        var rockety = 350;
+        var speed = 2;
+        function loopen() {
+            ctx.clearRect(0, 0, 800, 600);
+            ctx.drawImage(moon, 0, 0);
+            ctx.drawImage(rocket, rocketx, rockety);
+
+            rockety -= speed;
+            speed += 0.1;
+
+            requestAnimationFrame(loopen);
+        }
+        loopen();
+        
+    </script>
+</body>
+</html>

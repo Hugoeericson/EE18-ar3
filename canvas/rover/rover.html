@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="sv">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title></title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <canvas width="800" height="600"></canvas>
+    <script>
+        const eCanvas = document.querySelector("canvas");
+
+        var ctx = eCanvas.getContext("2d");
+        
+        var rover = new Image();
+        rover.src = "./rover.png"
+        var roverX = 400;
+        var roverY = 100;
+
+        window.addEventListener("keydown", function(e) {
+            console.log(e.key);
+        })
+
+        function loopen() {
+            ctx. clearRect(0, 0, 800, 600);
+
+            ctx.drawImage(rover, roverX, roverY, 100, 100);
+
+            requestAnimationFrame(loopen);
+        }
+        loopen();
+    </script>
+</body>
+</html>

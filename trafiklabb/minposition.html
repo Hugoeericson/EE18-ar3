@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="sv">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Geolocation</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="kontainer">
+        <h1>Geolocation</h1>
+        <p></p>
+    </div>
+    <script>
+        // Hitta element
+        const p = document.querySelector("p");
+
+        // Är geolocation påslagen?
+        if (navigator.geolocation) {
+            navigator.geolocation.getCurrentPosition(visaPosition);
+        } else {
+            p.textContent = "Kan inte hitta din position. Din webbläsare är för gammal!";
+        }
+
+        // Skriv ut positionen
+        function visaPosition(position) {
+            var latitude = position.coords.latitude;
+            var longitude = position.coords.longitude;
+
+            p.innerHTML = "Din position är: latitude = " + latitude + ", longitude = " + longitude + "<br>";
+
+            // Omvandla lat & lon till ett POST-paket
+            // Simulerar ett formulär
+            var postData = new FormData();
+            postData.append("lat", latitude);
+            postData.append("lon", longitude);
+
+            // Anropa ett backend-skript
+            // Samtidigt skicka lat & lon
+            // Ta emot svaret
+            fetch("./backend.php", {
+                method: "POST",                 // Ungefär som ett formulär
+                body: postData
+            })
+/*             .then(response => {
+                console.log(response.text());
+            })  */ 
+            
+            // Tar emot json-paket
+            .then(response => response.json())  // Tar emot json-paket
+            .then(stops => {                    // stops = hållplatser
+                // Loopa igenom array stops
+                stops.forEach(stop => {
+                    console.log(stop.name, stop.lat, stop.lon);
+                    p.innerHTML += stop.name + ": " + stop.lat + ", " + stop.lon + "<br>";
+                });
+            })
+        }
+    </script>
+</body>
+</html>

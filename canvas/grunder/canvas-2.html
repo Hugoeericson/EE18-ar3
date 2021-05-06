@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="sv">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Canvas övning</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <canvas width="800" height="600"></canvas>
+    <script>
+        // Element vi använder
+        const eCanvas = document.querySelector("canvas");
+
+        // slå på ritmotorn
+        var ctx = eCanvas.getContext("2d");
+
+
+        // rita ut en bild
+        // Steg 1: ladda in bilden
+        var bild = new Image();
+        bild.src = "./mushroom.png";
+        var bild2 = new Image();
+        bild2.src = "./carnivorous-plant.png";
+
+        // animationsloopen
+        var x = 0;
+        var y = 0;
+        var x2 = 0;
+        var y2 = 400;
+        function loopen() {
+            ctx.clearRect(0, 0, 800, 600);
+            ctx.drawImage(bild, x, y);
+            ctx.drawImage(bild2, x2, y2);
+
+            x += 5;
+            y += 1;
+            x2 += 5;
+            y2 -= 2;
+
+            requestAnimationFrame(loopen);
+        }
+        loopen();
+        
+    </script>
+</body>
+</html>

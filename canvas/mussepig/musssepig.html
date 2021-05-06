@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="sv">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title></title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <canvas width="800" height="600"></canvas>
+    <script>
+        const eCanvas = document.querySelector("canvas");
+
+        var ctx = eCanvas.getContext("2d");
+
+
+
+        // rita mussepigs huvud
+        function ritaMussePig(x, y) {
+            ctx.beginPath();
+            ctx.fillStyle = "#000";
+            ctx.arc(x, y, 100, 0, 2 * Math.PI);
+            ctx.fill();
+
+            ctx.beginPath();
+            ctx.arc(320, 220, 50, 0, 2 * Math.PI);
+            ctx.arc(480, 220, 50, 0, 2 * Math.PI);
+            ctx.fill();
+
+            ctx.beginPath();
+            ctx.fillStyle = "#FFF";
+            ctx.arc(360, 280, 50, 0, 2 * Math.PI);
+            ctx.arc(440, 280, 50, 0, 2 * Math.PI);
+            ctx.fill();
+            ctx.beginPath();
+
+            ctx.fillStyle = "#000";
+            ctx.arc(360, 280, 25, 0, 2 * Math.PI);
+            ctx.arc(440, 280, 25, 0, 2 * Math.PI);
+            ctx.fill();
+        }
+
+        function loopen() {
+            ritaMussePig(400, 300);
+
+            requestAnimationFrame(loopen);
+        }
+        loopen();
+    </script>
+</body>
+</html>
