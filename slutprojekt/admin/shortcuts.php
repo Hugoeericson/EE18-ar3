@@ -21,7 +21,9 @@ include "../conn.php";
 
 <body>
     <div class="kontainer">
+        <div class="nav-wrapper" >
         <?php
+        // API
         $url = "https://randomuser.me/api";
         $json = file_get_contents($url);
 
@@ -32,13 +34,16 @@ include "../conn.php";
         $name = $results[0]->name;
         $first = $name->first;
         $last = $name->last;
-        $gender = $results[0]->$gender;
+        $email = $results[0]->email;
 
-        echo "<p>$first</p>";
-        echo "<p>$last</p>";
-        echo "<p>$gender</p>";
+        echo "<div class=\"users\">";
+        echo "<div class=\"nav-item\"><p>$first</p></div>";
+        echo "<div class=\"nav-item\"><p>$last</p></div>";
+        echo "<div class=\"nav-item\"><p>$email</p></div>";
+        echo "</div>";
         ?>
         <h1>Dina genvägar</h1>
+        </div>
         <div class="bgwrapper">
             <h3>Lägg till genvägar</h3>
             <div class="gridwrapper">
